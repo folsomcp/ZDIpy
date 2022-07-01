@@ -9,11 +9,12 @@ This readme includes some basic information about running ZDIpy, however for any
 The main DI and ZDI code is zdipy.py, which uses the input files inzdi.dat, model-voigt-line.dat, and the line profiles specified inside inzdi.dat (in this example they are in the LSDprof directory).
 
 There are plotting functions for the results of the ZDI code:
-plotIV.py plots the fits to observed LSD profiles (from outLineModels.dat and outObserved.dat).
-plotMag.py plots the result of the magnetic mapping (from outMagCoeff.dat)
-plotBright.py plots the result of brightness mapping (from outBrightMap.dat by default)
+- plotIV.py plots the fits to observed LSD profiles (from outLineModels.dat and outObserved.dat).
+- plotMag.py plots the result of the magnetic mapping (from outMagCoeff.dat)
+- plotBright.py plots the result of brightness mapping (from outBrightMap.dat by default)
+- Some additional plotting scripts are in the utils/ directory.
 
-The comp-ana.py provides some information about the strength and geometry of a magnetic map (from outMagCoeff.dat).
+comp-ana.py provides some information about the strength and geometry of a magnetic map (from outMagCoeff.dat).
 
 renormLSD.py provides a utility for renormalizing LSD (or line) profiles if necessary.  This can be useful for precise brightness mapping.  This uses the input file inrenorm.dat and and the line profiles specified inside inrenorm.dat
 
@@ -50,7 +51,7 @@ A set of LSD profiles, in this example in the ./LSDprof directory.
 
 model-voigt-line.dat
 - This file contains information controlling the model line profile, as well as the limb darkening coefficient.  Lines beginning with a # are treated as comments and ignored.  At the moment only one model line is used, and hence only one (non-comment) line of data can be provided (additional lines may cause the program to crash).  However, this could be expanded to consider multiple lines in the future.  
-- The line model should contain, in order: the wavelength of the line (in nm).  The central depth of the local line profile.  The width of the Gaussian line profile (in km/s, this is sqrt(2)*sigma of the Gaussian, equivalent to thermal and microturbulent velocity).  The Lorentzian width for the line (as a fraction of the Gaussian width, this is 1/2*FWHM of the Lorentzian)  The effective Lande factor for the line.  The limb darkening coefficient; a linear limb darkening law is used (e.g. Gray 2005, eq. 17.11, in the form: brightness = 1-coefficient*(1-cos(theta)) ).  A gravity darkening coefficient, used for models that are oblate due to rapid rotation (if this is value omitted gravity darkening is neglected), in the form g^beta.  For fully radiative stars the coefficient should be beta=1.0, for convective stars it should be smaller, see Claret & Bloemen (2011) for temperature and wavelength dependent values.
+- The line model should contain, in order: the wavelength of the line (in nm).  The central depth of the local line profile.  The width of the Gaussian line profile (in km/s, this is sqrt(2)sigma of the Gaussian, equivalent to thermal and microturbulent velocity).  The Lorentzian width for the line (as a fraction of the Gaussian width, this is 1/2 FWHM of the Lorentzian)  The effective Lande factor for the line.  The limb darkening coefficient; a linear limb darkening law is used (e.g. Gray 2005, eq. 17.11, in the form: brightness = 1-coefficient(1-cos(theta)) ).  A gravity darkening coefficient, used for models that are oblate due to rapid rotation (if this is value omitted gravity darkening is neglected), in the form g^beta.  For fully radiative stars the coefficient should be beta=1.0, for convective stars it should be smaller, see Claret & Bloemen (2011) for temperature and wavelength dependent values.
 
 
 ### Output Files
@@ -58,8 +59,8 @@ model-voigt-line.dat
 outMagCoeff.dat
  This file contains the output spherical harmonic coefficients, in the form of Donati et al. 2006.  These coefficients are what actually constitute the ZDI map.  
 -  The first line of the file is a header (an unused comment).  
--  The second line contains the number of spherical harmonic l and m combinations, followed by the number of blocks of spherical harmonic coefficients (always 3, since this code always uses alpha, beta and gamma).  The last number on this line is the mode of ZDI in J-F's code (usually -3 for poloidal + toroidal with alpha, beta and gamma coefficients).  However, J-F's code actually uses the complex conjugate of the coefficients (relative to what is written in Donati et al. 2006).  So to maintain compatibility with that code, if the last number is -3, the complex conjugates are used, or if I break compatibility and use the values exactly as written in the paper the last number is set to -30.  ... I may need a better long term solution here!
-- The following lines contain the l order and m order of the spherical harmonic, followed by the real and the imaginary component of the coefficient.  The first block of these lines is for the alpha coefficient, followed by a blank line, then the beta coefficient, then a blank line, then the gamma coefficient.  (If the last number in the second line of the file is -3 then the imaginary parts of the coefficients are negative relative to Donati et al. 2006, while if it is -30 the imaginary coefficients are positive.  Yes that is overly confusing.)
+-  The second line contains the number of spherical harmonic l and m combinations, followed by the number of blocks of spherical harmonic coefficients (always 3, since this code always uses alpha, beta and gamma).  The last number on this line corresponds to the mode of ZDI in Donati's code (usually -3 for poloidal + toroidal with alpha, beta and gamma coefficients).  However, there is a discrepancy in sign between this code and Donati's internally (complex conjugate of the coefficients, relative to what is written in Donati et al. 2006).  So a flag of -30 follows the coefficients used in this code internally.
+- The following lines contain the l order and m order of the spherical harmonic, followed by the real and the imaginary component of the coefficient.  The first block of these lines is for the alpha coefficient, followed by a blank line, then the beta coefficient, then a blank line, then the gamma coefficient.  (If the last number in the second line of the file is -3 then the imaginary parts of the coefficients are negative relative to Donati et al. 2006, while if it is -30 the imaginary coefficients are positive.)
 
 outBrightMap.dat
 - This is the resulting brightness map.  It contains columns of colatitude, longitude (in radians), and relative brightness.
