@@ -1,0 +1,9 @@
+#wl0   str     GaussWidth(km/s)  LorantzWidth(1/gausswidth) lande_g limb_darkening gravity_darkening
+650.0  0.6306  2.41              0.89                       1.195   0.66           0.5  #fit solar observed LSD profile
+#650.0  0.735   1.66              1.2975                     1.195    0.66   #fit observed LSD HD219134 (T=4700 K, logg 4.4, vsini~0.5 km/)
+#650.0  0.749   2.011             0.6432                     1.195    0.66   #fit synthetic line, mean atomic data  (T=4700 K, logg=4.4, vmic=1.1)
+#
+#Gravity darkening can be turned off by setting the coefficient to 0.0.
+#The gravity coefficient is used in the form g^beta, for a fully radiative star it is 1.0, 
+#for convective stars try Claret & Bloemen (2011, A&A 529, A75) for wavelength dependent values
+#calculated from a wide range of model atmospheres.

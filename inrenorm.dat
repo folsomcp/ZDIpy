@@ -1,0 +1,45 @@
+#Lines beginning with a # are treated as a comment
+#Parameters for continuum fit.
+#Renormalize continuum? (0=no|1=yes)
+1
+#vel_line_start  vel_line_end  (inner edges of continuum near the line, 
+# in km/s, relative to line centre Vr below)
+-80.0       80.0
+#vel_prof_start  vel_prof_end  
+# start and end of the LSD profile used for the continuum estimation, 
+# in absolute velocity, km/s.  
+# If both limits are set to 0.0 the full profile outside the line will be used.
+ 0.0        0.0
+# Order of the continuum polynomial to be fit 
+# (in the form: y = sum_{i=1,n}(a_i*x^i) )
+ 3
+#Save continuum polynomial? (0=no|1=yes)
+0
+#Plot continuum fit (with matplotlib)? (0=no|1=yes)
+1
+#Parameters for equivalent width fit:
+#Renormalize line equivalent width (to mean value)? (0=no|1=yes)
+1
+#vel_start  vel_end (line range for EW, km/s, relative to line centre Vr below)
+# This may be different from the range used for continuum calculations,
+# particularly if the edge of the line is hard to precisely define.  
+# This should be the same as the range used for ZDI, 
+# while the above velocity range can differ.
+-80.0       80.0
+#file name                         centre Vr (km/s)
+LSDprof/lopeg_16aug14_v_02.prof    -19.8
+LSDprof/lopeg_19aug14_v_01.prof    -19.8
+LSDprof/lopeg_19aug14_v_05.prof    -19.8
+LSDprof/lopeg_19aug14_v_10.prof    -19.8
+LSDprof/lopeg_20aug14_v_01.prof    -19.8
+LSDprof/lopeg_20aug14_v_05.prof    -19.8
+LSDprof/lopeg_23aug14_v_01.prof    -19.8
+LSDprof/lopeg_23aug14_v_07.prof    -19.8
+LSDprof/lopeg_25aug14_v_01.prof    -19.8
+LSDprof/lopeg_25aug14_v_05.prof    -19.8
+LSDprof/lopeg_25aug14_v_10.prof    -19.8
+LSDprof/lopeg_27aug14_v_01.prof    -19.8
+LSDprof/lopeg_27aug14_v_07.prof    -19.8
+LSDprof/lopeg_31aug14_v_01.prof    -19.8
+LSDprof/lopeg_31aug14_v_05.prof    -19.8
+LSDprof/lopeg_31aug14_v_10.prof    -19.8

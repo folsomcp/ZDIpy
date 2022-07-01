@@ -1,0 +1,59 @@
+#Lines beginning with a # are treated as a comment
+# i (deg)   vsini (kms)  period (days)   dOmega (rad/day) 
+45.0        67.7         0.4232          0.02
+#Mass (Msun)  Radius (Rsun), for oblateness only, set to 0.0 for a sphere
+0.66          0.72  #For LO Peg
+#numRings (number of surface elements in the colatidudianl direction)
+#30  #for ~1000 surface elements
+60
+#fit to target chi^2 (C) or entropy (E)
+#  target_value num_iterations
+C  1.0         20  #a target chi^2 for fitting magnetic map
+#E  -28828.      20 #a target entropy for fitting magnetic map
+#C  0.10         20  #a target chi^2 for brightness (image entropy)
+#C  0.20         20  #a target chi^2 for brightness (filling factor entropy)
+#test_aim is the target value of Skilling & Bryan's 'test' parameter 
+#used as the convergence criteria.  This measures how non-parallel
+#the gradiants in enteropy and chi^2 are, and smaller is better.
+#test_aim
+0.0001
+#Allowed magnetic geometry types: 'Full' (alpha, beta, gamma),
+# 'Poloidal' (alpha, beta, gamma=0), 'PotTor' (alpha=beta, gamma),
+# 'Potential' (alpha=beta, gamma=0)
+#Fit magnetic     lMax   B entropy slope ('default value')  mag. geom. type
+1                 15     100.0                              Full
+#Initiate B model from file (0=no/1=yes)  file_name
+0           outMagCoeff-ref1.dat
+#Fit bright            chi^2 scaling for Stokes I    Brightnes entropy scaling
+#(use when simultainiously fitting brightness and magnetic field.  otherwise leave it at 1)
+0                      1.                            1.
+#Brightness entropy (1 = traditional image, 2 = filling factor)
+#      default brightness    limiting brightness (for filling factor entropy)
+1      1.0                   1.01
+#Initiate brightness map from file (0=no/1=yes)  file_name
+0           outBrightMap-ref1.dat
+#Automatically estimate line strength from equivalent width (1=yes)
+1
+#resolution
+65000.
+#vel_start  vel_end (km/s, wrt line center Vr)
+-80.0       80.0
+#Julian date for rotation cycle 0
+2456892.015
+#file name,                           Julian Date,   center Vr (km/s)
+LSDprof/lopeg_16aug14_v_02.prof.norm  2456886.39347    -19.8
+LSDprof/lopeg_19aug14_v_01.prof.norm  2456889.45893    -19.8
+LSDprof/lopeg_19aug14_v_05.prof.norm  2456889.49867    -19.8
+LSDprof/lopeg_19aug14_v_10.prof.norm  2456889.63364    -19.8
+LSDprof/lopeg_20aug14_v_01.prof.norm  2456890.37073    -19.8
+LSDprof/lopeg_20aug14_v_05.prof.norm  2456890.41035    -19.8
+LSDprof/lopeg_23aug14_v_01.prof.norm  2456893.37022    -19.8
+LSDprof/lopeg_23aug14_v_07.prof.norm  2456893.59322    -19.8
+LSDprof/lopeg_25aug14_v_01.prof.norm  2456895.35262    -19.8
+LSDprof/lopeg_25aug14_v_05.prof.norm  2456895.39231    -19.8
+LSDprof/lopeg_25aug14_v_10.prof.norm  2456895.66972    -19.8
+LSDprof/lopeg_27aug14_v_01.prof.norm  2456897.37195    -19.8
+LSDprof/lopeg_27aug14_v_07.prof.norm  2456897.63668    -19.8
+LSDprof/lopeg_31aug14_v_01.prof.norm  2456901.34774    -19.8
+LSDprof/lopeg_31aug14_v_05.prof.norm  2456901.38749    -19.8
+LSDprof/lopeg_31aug14_v_10.prof.norm  2456901.60634    -19.8
