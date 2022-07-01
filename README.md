@@ -62,18 +62,21 @@ outMagCoeff.dat
 - The following lines contain the l order and m order of the spherical harmonic, followed by the real and the imaginary component of the coefficient.  The first block of these lines is for the alpha coefficient, followed by a blank line, then the beta coefficient, then a blank line, then the gamma coefficient.  (If the last number in the second line of the file is -3 then the imaginary parts of the coefficients are negative relative to Donati et al. 2006, while if it is -30 the imaginary coefficients are positive.  Yes that is overly confusing.)
 
 outBrightMap.dat
-  This is the resulting brightness map (only created if brightness mapping was done).  It contains columns of colatitude, longitude (in radians), and relative brightness.
+- This is the resulting brightness map.  It contains columns of colatitude, longitude (in radians), and relative brightness.
+
+outBrightMapGDark.dat
+- The brightness map, with the effect of gravity darkening included, only useful for very rapidly rotating oblate star models.  
 
 outLineModels.dat
-  This file contains the best fit model line profiles.  
+- This file contains the best fit model line profiles.  
   The file contains blocks of data for each observation.  Each block begins with a comment (starting in a #) listing the rotational cycle at which the model was computed.  The subsequent lines contain columns of velocity, I/Ic and V/Ic.  The block ends in a blank line.  This is repeated for each observed rotational cycle.
-  Models for individual phases are also saved in same directory as the observed SOD profiles, with file names of [observation name].model
+- Models for individual phases are also saved in same directory as the observed LSD profiles, with file names of observation_name.model
 
 outObserved.dat
-  This file contains the observed (LSD) line profiles data-points that were actually fit.  It could be useful for verifying the program properly read in the observations, and for comparison with lineModels.dat.  Columns are velocity, I/Ic, sigma I/Ic, V/Ic, and sigma(V/Ic).  Each block begins with a comment listing the rotational cycle and file name of the observation, and ends in a black line.  Observations are in the same order as given in inzdi.dat.
+- This file contains the observed (LSD) line profiles data-points that were actually fit.  It could be useful for verifying the program properly read in the observations, and for comparison with lineModels.dat.  Columns are velocity, I/Ic, sigma I/Ic, V/Ic, and sigma(V/Ic).  Each block begins with a comment listing the rotational cycle and file name of the observation, and ends in a black line.  Observations are in the same order as given in inzdi.dat.
 
 outFitSummary.txt
-  This file contains some diagnostic output of the fit, for each iteration of the fitting routine (this is also printed to the terminal).
+- This file contains some diagnostic output of the fit, for each iteration of the fitting routine (this is also printed to the terminal).
 
 
 ## Other details
